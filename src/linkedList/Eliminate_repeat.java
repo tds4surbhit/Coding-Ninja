@@ -30,6 +30,9 @@ public class Eliminate_repeat {
 	public static Node<Integer> eliminateRepeat(Node<Integer> head){
 		Node<Integer> temp = head;
 		while(temp != null) {
+			if(temp.next == null) {
+				break;
+			}
 		while(temp.data == temp.next.data) {
 			
 				temp.next=temp.next.next;

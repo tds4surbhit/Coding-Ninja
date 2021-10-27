@@ -28,19 +28,26 @@ public class appendLastNToFirst {
 	}
 	
 	public static Node<Integer> appendLastNToFirst(Node<Integer> head , int n) {
-		int c = 0 ;
+		 if(n == 0){
+	            return head;
+	        }
+		
+		int c = 1 ;
 		Node<Integer> temp = head;
 		Node<Integer> temp2 = head ;
-		while(temp != null) {
+		while(temp.next != null) {
 			temp = temp.next;
 			c= c+1;
 		}
-		
-		for(int i = 0 ; i < c-n ; i++) {
+		if(c < n){
+            return head;
+		}
+		for(int i = 0 ; i < c-n-1 ; i++) {
 			temp2 = temp2.next;
 		}
 		temp.next= head;
 		head = temp2.next;
+		temp2.next = null;
 		return head ;
 		
  	}
