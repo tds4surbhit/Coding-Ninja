@@ -1,8 +1,9 @@
 package linkedList;
 
+import java.util.ArrayList;
 import java.util.Scanner;
 
-public class PrintReverse {
+public class PalindromeLinkedList {
 	
 	public static Node<Integer> takeInput(){
 		Node<Integer> head = null ;
@@ -27,20 +28,32 @@ public class PrintReverse {
 		return head ;
 	}
 	
-	public static void reverseLinkedlist(Node<Integer> head){
-		if(head == null) {
-			return ;
+	public static boolean isPalindrome(Node<Integer> head) {
+		Node<Integer> temp = head;
+		ArrayList<Integer> arr = new ArrayList<>();
+		while(head != null) {
+			arr.add(head.data);
+			head = head.next;
 		}
-		reverseLinkedlist(head.next);
-		System.out.print(head.data + " ");
-		
+		int start = 0 ;
+		int end = arr.size() -1 ;
+		while(start < end) {
+			if(arr.get(start) != arr.get(end)) {
+				return false ;
+			}
+			else {
+				start++;
+				end--;
+			}
+		}
+		return true ;
 	}
 
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
-		Scanner sc = new Scanner(System.in);
 		Node<Integer> head = takeInput();
-		reverseLinkedlist(head);
+		System.out.println(isPalindrome(head));
+		
 	}
 
 }
